@@ -1,0 +1,22 @@
+name: trojita
+version: master
+summary: A fast and lightweight IMAP e-mail client
+description: |
+  Trojitá is a very fast and lightweight IMAP e-mail client written using
+  the Qt library.
+
+grade: devel
+confinement: devmode
+
+apps:
+  trojita:
+    command: desktop-launch trojita
+    plugs: [network, unity7]
+
+parts:
+  trojita:
+    source: .
+    plugin: cmake
+    after: [desktop-qt5]
+    build-packages: [g++, libqt5svg5-dev, libqt5webkit5-dev]
+    stage-packages: [libqt5sql5-sqlite]
